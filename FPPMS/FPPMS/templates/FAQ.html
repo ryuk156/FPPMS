@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fanshawe BIA Project Proposals | FAQ</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/assates/css/style.css">
+    <link rel="stylesheet" href="../static/assates/css/effect.css">
+    <link rel="stylesheet" href="../static/assates/css/FAQ.css">
+    <link href="../static/assates/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../static/assates/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="../static/assates/css/footer/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assates/css/footer/bootstrap.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/assates/css/footer/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- Vendor CSS-->
+    <link href="../static/assates/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../static/assates/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Main CSS-->
+    <link href="../static/assates/css/main.css" rel="stylesheet" media="all">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style type="text/css">
+        .container1 {
+            padding: 60px 50px;
+        }
+    </style>
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<link rel="manifest" href="/static/site.webmanifest">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="container-fluid px-lg-5">
+                <nav class="navbar navbar-expand-lg my-navbar">
+                    <a class="navbar-brand" href="#">
+                      <span class="logo">
+                        <img src="../static/assates/image/logo.png" width="210" height="200" class="img-fluid">
+                      </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fa fa-bars"aria-hidden="true"></i></span>
+                     </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav m-auto">
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold" href="{% url 'home' %}"> HOME <span class="sr-only"></span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-bold" href="{% url 'about' %}">ABOUT US</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link font-weight-bold" href="{% url 'faq' %}">FAQ</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}">
+                            <div class="showcase-btn"><button class="header-btn bg-danger my-2 my-sm-0 font-weight-bold" type="submit">Admin</button></div>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="parallax-image-faq img-fluid content-banner">
+
+    </section>
+<br /><br />
+    <h1 class="text-dark font-weight-bold text-center">Frequently Asked Questions<h1>
+
+    <section style="margin-top: -50px;">
+      <div class="container-fluid col-sm-8 mx-auto m-4 p-5">
+        <div class="accordian">
+          <div class="accordian-item" id="question1">
+            <a class="accordian-link" href="#question1">
+              Who can submit a proposal?
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p id="paragraphs">
+              The proposal ideas can be submitted by different organisations, ex Fanshawe students and the Fanshawe faculty
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian-item" id="question2">
+            <a class="accordian-link" href="#question2">
+               Can we upload supporting documents related to the proposal?
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+              Yes. You can upload supporting documents, they can be in word or pdf format.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian-item" id="question3">
+            <a class="accordian-link" href="#question3">
+             How will I know what is the current status of my project?
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+              Once there is a change in the status, you will be approached by Fanshawe Faculty on the phone number/email provided by you.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian-item" id="question4">
+            <a class="accordian-link" href="#question4">
+             Can one user submit more than one proposal?
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+              Yes. A user can submit more than one proposal.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian-item" id="question5">
+            <a class="accordian-link" href="#question5">
+             What happens after the proposal has been approved?
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+                Students at Fanshwe will then start working on the proposal and further information will be given to you regarding that.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordian-item" id="question6">
+            <a class="accordian-link" href="#question6">
+              What if the project proposal I submit is too complex to finish in one term?
+                <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+                 You will have an option to split the project into more than 1 parts so that it can be completed in multiple terms.
+              </p>
+            </div>
+          </div>
+
+           <div class="accordian-item" id="question7">
+            <a class="accordian-link" href="#question7">
+              If my proposal id selected, will I be in direct contact with the students?
+                <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+                 With every accepted proposal, one Fanshawe Faculty member will be appointed. If needed, there can be contact with the students as well.
+              </p>
+            </div>
+          </div>
+
+           <div class="accordian-item" id="question8">
+            <a class="accordian-link" href="#question8">
+              What if I want to make changes to the proposal I have already submitted?
+                <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>
+                 You can resubmit the proposal with the changes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <br />
+      <footer class="page-footer font-small unique-color-dark " style="background-color: #808080; color:#ffffff;">
+
+        <section class="d-flex justify-content-between p-4" style="height:70px;font-size:14px; background-color: black;padding: 1.5rem">
+            <!-- Left -->
+            <div class="me-5" style="color: whitesmoke;">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div class="align">
+                 <a href="https://www.facebook.com/FanshaweCollege/" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>&nbsp;
+                <a href="https://www.google.com/search?q=fanshawe+london+south+campus&rlz=1C1CHBF_enCA882CA882&oq=fanshawe+london+south+campus&aqs=chrome..69i57j46i175i199i512j69i60.6605j0j4&sourceid=chrome&ie=UTF-8" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>&nbsp;
+                <a href="https://www.instagram.com/fanshaweldnsouth/" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>&nbsp;
+                <a href="https://www.linkedin.com/school/fanshawe-college/" class="text-white me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>&nbsp;
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left mt-5" style="background-color: #808080;">
+
+            <!-- Grid row -->
+            <div class="row mt-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                    <!-- Content -->
+                    <h6 class="text-uppercase font-weight-bold">Fanshawe Project Proposal</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <a href="{% url 'home' %}" style="color:#ffffff"><p class="footerp" style="font-size: 14px;">Submit your Project Proposal</p></a>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Services</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                         <a href="{% url 'home' %}" style="font-size:14px; color:#ffffff">Home</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'about' %}" style="font-size:14px; color:#ffffff">About us</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'faq' %}" style="font-size:14px; color:#ffffff">FAQ</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4"style="font-size: 14px;">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="https://www.fanshaweonline.ca/d2l/home" style="color:#ffffff">Fanshawe Online</a>
+                    </p><br>
+
+
+                    <p>
+                        <a href="https://webadvisor.fanshawec.ca/WebAdvisor/WebAdvisor?&TYPE=M&PID=CORE-WBMAIN&TOKENIDX=2120059530" style="color:#ffffff">Webadvisor</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4"style="font-size: 14px;">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                   <p>
+                        <i class="fas fa-home mr-3"></i><a href= "https://www.google.com/maps/place/Fanshawe+College/@42.9350966,-81.2233057,20.5z/data=!4m5!3m4!1s0x882ef3a3b4721a31:0x902a080c25322ba!8m2!3d42.9350318!4d-81.2232509" style="color:#FFFFFF "> 1060 Wellington Rd, London, ON</a></p><br>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i>  <a href="mailto:contact@fanshaweprojectproposals.ca" style="color:#FFFFFF ">Email Us </a></p><br>
+                   <br>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3"style="font-size: 14px;">© 2023 Copyright:
+            <a href="{% url 'home' %}" style="color:#ffffff">Fanshawe Project Proposal Management System</a>
+            <br /><br />
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+
+
+    <!--footer-->
+      <script src="/static/assates/js/footer/jquery-3.6.0.min.js.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="../static/assates/js/footer/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+     <!-- Vendor JS-->
+     <script src="../static/assates/vendor/select2/select2.min.js"></script>
+     <script src="../static/assates/vendor/datepicker/moment.min.js"></script>
+     <script src="../static/assates/vendor/datepicker/daterangepicker.js"></script>
+     <!-- Main JS-->
+     <script src="../static/assates/js/global.js"></script>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+
+     <script type="text/javascript">
+         $(function() {
+             var navbar = $('.header-inner');
+             $(window).scroll(function() {
+                 if ($(window).scrollTop() <= 40) {
+                     navbar.removeClass('navbar-scroll');
+                 } else {
+                     navbar.addClass('navbar-scroll');
+                 }
+             });
+         });
+     </script>
+<!-- Default Statcounter code for Fanshawe Project Proposals
+https://www.fanshaweprojectproposals.ca -->
+<script type="text/javascript">
+var sc_project=12825717;
+var sc_invisible=1;
+var sc_security="8b444c69";
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12825717/0/8b444c69/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+  </body>
+</html>

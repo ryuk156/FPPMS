@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/addAdmin/styles/reset.min.css" />
+    <link rel="stylesheet" href="/static/addAdmin/styles/style.css" />
+    <link rel="stylesheet" href="/static/addAdmin/styles/header-1.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/static/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-pzjw8f+2k1zSLGB8Px6PzG6g6fkq8bLrZ0yYlLE+Iz1DfYn2dg+tkgYj6mjaxx2n"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Project Proposals | Add User</title>
+    <style>
+      body {
+        color: #000;
+        overflow-x: hidden;
+        height: 100%;
+        /* background-color: #ec6262;  */
+        /* background-image: url("./11111.jpg"); */
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .card {
+        padding: 30px 40px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        border: none !important;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .blue-text {
+        color: #e41f20;
+      }
+
+      .form-control-label {
+        margin-bottom: 0;
+        font-family: poppins, sans-serif;
+      }
+      input {
+        background-color: #e5e5e5;
+      }
+
+      input,
+      textarea,
+      button {
+        padding: 8px 15px;
+        border-radius: 5px !important;
+        margin: 5px 0px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 18px !important;
+        font-weight: 300;
+      }
+
+      input:focus,
+      textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #e41f20;
+        outline-width: 0;
+        font-weight: 400;
+      }
+      .btn {
+        color: white;
+        background-color: #e41f20;
+      }
+      .btn-block {
+        text-transform: uppercase;
+        font-size: 15px !important;
+        font-weight: 400;
+        height: 43px;
+        cursor: pointer;
+      }
+
+      .btn-block:hover {
+        color: white;
+        background-color: #ce6868;
+      }
+      h2 {
+        color: #e41f20;
+        font-family: poppins, sans-serif;
+        font-size: 32px;
+      }
+      button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0;
+      }
+      .navbar {
+        background-color: #e41f20;
+      }
+      .navbar-nav {
+        color: black;
+      }
+      .nav-link {
+        color: black;
+      }
+      .nav-link:hover {
+        background-color: white;
+        color: black;
+      }
+
+      .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      .btn-file {
+        border: 2px solid black;
+        color: black;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .upload-btn-wrapper input[type="file"] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">
+          <img
+            src="/static/addAdmin/logo.png"
+            width="210"
+            height="200"
+            class="img-fluid"
+          />
+        </a>
+        <nav class="nav">
+          <button class="nav__toggle" aria-expanded="false" type="button">
+            <img src="/static/addAdmin/dropdown1.jpg" />
+          </button>
+          <ul class="nav__wrapper">
+            <li class="nav__item">
+              <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav__item">
+              <a href="{% url 'proposals' %}" class="nav-link">Proposals</a>
+            </li>
+            <li class="nav__item">
+              <a href="{% url 'addAdmin' %}" class="nav-link">Add Admin</a>
+            </li>
+            <li class="nav__item">
+              <a href="{% url 'addAdmin' %}" class="nav-link active"
+                >Add Students</a
+              >
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav__item">
+              <a href="{% url 'login' %}" class="nav-link">Logout</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  
+    <div class="container pt-4" >
+   
+
+        <h2>All Milestones</h2>
+        
+        <div class="list-group ">
+            {% if milestones %}
+                {% for milestone in milestones %}
+                    <div class="list-group-item list-group-item-action shadow p-3 mb-5 bg-white rounded ">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ milestone.mileStoneTitle }}</h5>
+                            <small>{{ milestone.mileStonePublishDate|date:"D, d M Y H:i:s" }}</small>
+                            
+                        </div>
+                        <p class="mb-1">{{ milestone.mileStoneContent  | safe }}</p>
+                        <!-- <form action="{% url 'delete_milestone' milestone.id %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="submit"  class="btn btn-danger" value="Delete">
+                        </form> -->
+                        <small>Posted by: {{ milestone.mileStoneAuthor }}</small>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No posts available.</p>
+            {% endif %}
+        </div>
+    </div>
+   
+    <footer class="page-footer bg-dark text-white font-small elegant-color">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2023 Copyright:
+        <a href="#" class="text-white">
+          Fanshawe Project Proposal Management system
+        </a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="/static/addAdmin/js/header-1.js"></script>
+    <!-- Default Statcounter code for Fanshawe Project Proposals
+https://www.fanshaweprojectproposals.ca -->
+    <script type="text/javascript">
+      var sc_project = 12825717;
+      var sc_invisible = 1;
+      var sc_security = "8b444c69";
+    </script>
+    <script
+      type="text/javascript"
+      src="https://www.statcounter.com/counter/counter.js"
+      async
+    ></script>
+    <noscript
+      ><div class="statcounter">
+        <a
+          title="Web Analytics
+Made Easy - Statcounter"
+          href="https://statcounter.com/"
+          target="_blank"
+          ><img
+            class="statcounter"
+            src="https://c.statcounter.com/12825717/0/8b444c69/1/"
+            alt="Web Analytics Made Easy - Statcounter"
+            referrerpolicy="no-referrer-when-downgrade"
+        /></a></div
+    ></noscript>
+    <!-- End of Statcounter Code -->
+  </body>
+</html>

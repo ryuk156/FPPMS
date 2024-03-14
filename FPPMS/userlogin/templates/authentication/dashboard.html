@@ -1,0 +1,43 @@
+<!-- dashboard.html -->
+
+
+
+
+
+{% extends 'user_base.html' %}
+
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/my_static/ckeditor/ckeditor/';</script>
+{{ block.super }}
+{% endblock %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container pt-4" >
+   
+
+    <h2>All Milestones</h2>
+    
+    <div class="list-group ">
+        {% if milestones %}
+            {% for milestone in milestones %}
+                <div class="list-group-item list-group-item-action shadow p-3 mb-5 bg-white rounded ">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ milestone.mileStoneTitle }}</h5>
+                        <small>{{ milestone.mileStonePublishDate|date:"D, d M Y H:i:s" }}</small>
+                    </div>
+                    <p class="mb-1">{{ milestone.mileStoneContent  | safe }}</p>
+                    <form action="{% url 'delete_milestone' milestone.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="submit"  class="btn btn-danger" value="Delete">
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No posts available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+

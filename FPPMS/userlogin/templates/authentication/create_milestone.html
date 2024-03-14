@@ -1,0 +1,60 @@
+{% extends 'user_base.html' %}
+
+{% block title %}Create Milestone{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if new_post_added %}
+    <div class="alert alert-success" role="alert">
+        New post added successfully!
+        Go to  <a href="{% url 'studentdashboard'%}">Student dashboard</a>
+    </div>
+    {% endif %}
+    <h1>Create Milestone</h1>
+    <form method="POST" action="createmilestone" id="myForm" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="mileStoneTitle"  required>
+            <div class="invalid-feedback">Please provide a title.</div>
+        </div>
+        <div class="form-group">
+            <label for="content">Content:</label>
+            {{form.media}}
+            <textarea class="ckeditor form-control" id="content" name="mileStoneContent" rows="4" required></textarea>
+            <div class="invalid-feedback">Please provide content.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Milestone</button>
+    </form>
+
+</div>
+
+<script>
+    // Example of form validation using JavaScript
+
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var form = document.getElementById('myForm');
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    showValidationMessages();
+                }
+                form.classList.add('was-validated');
+            }, false);
+
+            function showValidationMessages() {
+                var invalidFields = form.querySelectorAll(':invalid');
+                invalidFields.forEach(function(field) {
+                    var feedback = field.nextElementSibling;
+                    if (feedback.classList.contains('invalid-feedback')) {
+                        feedback.style.display = 'block';
+                    }
+                });
+            }
+        }, false);
+    })();
+</script>
+{% endblock %}

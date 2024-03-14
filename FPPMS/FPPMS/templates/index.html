@@ -1,0 +1,467 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Fanshawe BIA Project Proposals | Home
+{% endblock %}
+
+{% block content %}
+
+    <section class="parallax-image img-fluid content-banner">
+
+    </section>
+
+    <div id="about" class="container1" style="background-color:#000000; color: #ffffff;">
+  <div class="row">
+    <div class="col-sm-6" style="margin-bottom: 20px">
+      <h1>Hello, Welcome!</h1><br>
+      <h3>Submit Your Project Proposal Below! <a href="#arrow"> <span class=" box animate fadeInUp one glyphicon glyphicon-circle-arrow-down" style="color: #ffffff"></span> </a></h3>
+      <h4>Get to know us more</h4><br>
+      <button class="btn btn-danger btn-lg showcase-btn header-btn"><a href="https://fppms.pythonanywhere.com/aboutus" style="color: #ffffff;">About us</button></a><br>
+    </div>
+    
+
+    <div class="col-sm-6 text-center" style="background-color: black; color:#ffffff; padding: 20px">
+      <h1>We're here for you</h1>
+
+      <h3> We can complete your project for you with the help of talented Fanshawe BIA students.</h3>
+    </div>
+  </div>
+</div>
+
+
+    <div class="page-wrapper p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790" style="box-shadow: 5px 10px 18px red">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 id="arrow" class="title">Project Proposal Form</h2>
+                    
+                </div>
+                <div class="d-flex flex-direction-column  justify-content-center align-items-center pt-3">
+                    {%for message in messages %}
+                    <div >
+                    <div style="width:600px" class="alert custom-alert-color d-flex align-items-center text-center" role="alert">
+                    <div class="text-center font-weight-bold text-light">
+                        <strong><i class="fa fa-check"></i> </strong> {{ message }}
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="card-body">
+                    <form method="POST" action='Insertproposal' enctype="multipart/form-data">
+                         {% csrf_token %}                         
+                        <div class="form-row ">
+                           <div class="name info-left">Title *</div>
+                           
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}"  >
+                   
+                                   <label id="title-error"></label>
+
+                                </div>
+                             </div>
+                        </div>
+
+
+                       
+                        <div class="form-row m-b-55">
+                            <div class="name info-left">Name *</div>
+                            <div class="value info-right">
+                                <div class="row row-space">
+                                    <div class="col-6">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="fname" id="fname" >
+                                            
+      
+                                            <label class="label--desc">first name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="lname" >
+                                            <label class="label--desc">last name</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Phone *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="number" name="phone" >
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="name info-left">Email *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="email" name="email"  >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">User Type *</div>
+                            <div class="">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="userType" >
+                                            <option disabled="disabled" selected="selected">Choose any option</option>
+                                            <option>Sponsor</option>
+                                            <option>Organisation</option>
+                                            <option>Fanshawe Alumni</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Proposal Status<label class="label--desc">(default)</label></div>
+                            <div class="">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="status" >
+                                            <option  selected="selected"> Pending </option>
+                                            <option disabled="disabled"> Approved</option>
+                                            <option disabled="disabled"> Rejected</option>
+                                            <option disabled="disabled"> Split</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Project Title *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="ptitle" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Project Description *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <textarea  class="input--style-5" type="text" style="width:100%;" name="pdesc" ></textarea >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Project Website *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="pwebsite" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Comment *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <textarea class="input--style-5" type="text" style="width:100%;" name="comment" ></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+						<div class="form-row">
+                            <div class="name info-left">Who Referred you? *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="reference" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Documents (Optional)</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="form-control form-control-lg" id="document" name="document" multiple type="file" />
+                                </div>
+                            </div>
+                        </div>
+
+                    <!--    <div class="form-row" style="padding-left:165px;">
+                            <div class="g-recaptcha" data-sitekey="6Lex-JMfAAAAAFi8AuxqZk6ro7zwl3APC8Jd_HwQ"></div>
+							<input type="hidden" name="derive_fields" value="imgverify=g-recaptcha-response" />
+                        </div>-->
+
+                        <div>
+                            <div class="text-center">
+                                <button class="btn btn--radius-2 btn--red" type="submit">Submit Proposal</button>
+                            </div>
+                        </div>
+
+                            
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <footer class="page-footer font-small unique-color-dark " style="color:white; background-color: #808080;">
+
+        <section class="d-flex justify-content-between p-4" style="background-color: black">
+            <!-- Left -->
+            <div class="me-5" style="color: white;">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div class="align">
+                <a href="https://www.facebook.com/FanshaweCollege/" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>&nbsp;
+                <a href="https://www.google.com/search?q=fanshawe+london+south+campus&rlz=1C1CHBF_enCA882CA882&oq=fanshawe+london+south+campus&aqs=chrome..69i57j46i175i199i512j69i60.6605j0j4&sourceid=chrome&ie=UTF-8" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>&nbsp;
+                <a href="https://www.instagram.com/fanshaweldnsouth/" class="text-white me-4">
+                    <i class="fab fa-instagram"></i>
+                </a>&nbsp;
+                <a href="https://www.linkedin.com/school/fanshawe-college/" class="text-white me-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>&nbsp;
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left mt-5" style="background-color: #808080; color:white">
+
+            <!-- Grid row -->
+            <div class="row mt-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                    <!-- Content -->
+                    <h6 class="text-uppercase font-weight-bold">Fanshawe Project Proposal</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <a href="{% url 'home' %}" style="color:#ffffff"><p>Submit your Project Proposal</p></a>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" >
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Services</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                         <a href="{% url 'home' %}" style="color:#ffffff">Home</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'about' %}" style="color:#ffffff">About us</a>
+                    </p>
+                    <p>
+                        <a href="{% url 'faq' %}" style="color:#ffffff">FAQ</a>
+                    </p>
+
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="https://www.fanshaweonline.ca/d2l/home" style="color:#ffffff">Fanshawe Online</a>
+                    </p>
+
+                    <p>
+                        <a href="https://webadvisor.fanshawec.ca/WebAdvisor/WebAdvisor?&TYPE=M&PID=CORE-WBMAIN&TOKENIDX=2120059530" style="color:#ffffff">Webadvisor</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-5 col-lg-4 col-xl-3mx-auto mb-md-0 mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Contact Us</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fas fa-home mr-3"></i><a href= "https://www.google.com/maps/place/Fanshawe+College/@42.9350966,-81.2233057,20.5z/data=!4m5!3m4!1s0x882ef3a3b4721a31:0x902a080c25322ba!8m2!3d42.9350318!4d-81.2232509" style="color:#FFFFFF "> 1060 Wellington Rd, London, ON</a></p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i> <a href="mailto:contact@fanshaweprojectproposals.ca" style="color:#FFFFFF ">Email Us </a> </p>
+
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2023 Copyright:
+            <a href="{% url 'home' %}" style="color:#ffffff"> Fanshawe Project Proposal Management System</a>
+            <br /><br />
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+    <!--footer-->
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            var navbar = $('.header-inner');
+            $(window).scroll(function() {
+                if ($(window).scrollTop() <= 40) {
+                    navbar.removeClass('navbar-scroll');
+                } else {
+                    navbar.addClass('navbar-scroll');
+                }
+            });
+        });
+
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 7000);
+    </script>
+
+    <!-- Jquery JS-->
+    <script src="/static/assates/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="/static/assates/vendor/select2/select2.min.js"></script>
+    <script src="/static/assates/vendor/datepicker/moment.min.js"></script>
+    <script src="/static/assates/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="/static/assates/js/global.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+        window.sr = ScrollReveal();
+        sr.reveal('.showcase-btn',{
+            duration: 2000,
+            delay: 500,
+            origin: 'bottom'
+        });
+        sr.reveal('.info-left',{
+            duration:1000,
+            origin:'left',
+            distance:'300px',
+            viewFactor: 0.2
+        });
+        sr.reveal('.info-right',{
+            duration:1000,
+            origin:'right',
+            distance:'300px',
+            viewFactor: 0.2
+        });
+        </script>
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Function to validate the form
+                function validateForm() {
+                    // Get form inputs
+                    var title = document.getElementById('title');
+                    var fname = document.getElementById('fname');
+                    var lname = document.getElementById('lname');
+                    var phone = document.getElementById('phone');
+                    var email = document.getElementById('email');
+                    var ptitle = document.getElementById('ptitle');
+                    var pdesc = document.getElementById('pdesc');
+                    var pwebsite = document.getElementById('pwebsite');
+                    var comment = document.getElementById('comment');
+                    var reference = document.getElementById('reference');
+                    
+                    // Flag to track form validity
+                    var isValid = true;
+            
+                    // Validate each field
+                    if (title.value.trim() === '') {
+                        // Display error message for title
+                        title.classList.add('error');
+                        document.getElementById('title-error').innerText = 'Title is required';
+                        isValid = false;
+                    } else {
+                        title.classList.remove('error');
+                        document.getElementById('title-error').innerText = '';
+                    }
+            
+                    // Repeat this block for other fields
+            
+                    // Return form validity
+                    return isValid;
+                }
+            
+                // Form submission event listener
+                document.getElementById('proposal-form').addEventListener('submit', function(event) {
+                    // Validate form before submission
+                    if (!validateForm()) {
+                        // Prevent form submission if validation fails
+                        event.preventDefault();
+                    }
+                });
+            });
+            </script>
+            
+            
+        <!-- Default Statcounter code for Fanshawe Project Proposals
+https://www.fanshaweprojectproposals.ca -->
+<script type="text/javascript">
+var sc_project=12825717;
+var sc_invisible=1;
+var sc_security="8b444c69";
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12825717/0/8b444c69/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+    </body>
+
+</html>
+
+{% endblock content %}

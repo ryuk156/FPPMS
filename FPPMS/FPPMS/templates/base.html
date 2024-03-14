@@ -1,0 +1,211 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Fanshawe BIA Project Proposals{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link
+      href="{% static 'assates/vendor/mdi-font/css/material-design-iconic-font.min.css' %}"
+      rel="stylesheet"
+      media="all"
+    />
+    <link
+      href="{% static 'assates/vendor/font-awesome-4.7/css/font-awesome.min.css' %}"
+      rel="stylesheet"
+      media="all"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'assates/css/footer/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assates/css/footer/bootstrap.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assates/css/footer/style1.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Font special for pages-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+      rel="stylesheet"
+    />
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <!-- Vendor CSS-->
+    <link
+      href="{% static 'assates/vendor/select2/select2.min.css' %}"
+      rel="stylesheet"
+      media="all"
+    />
+    <link
+      href="/static/assates/vendor/datepicker/daterangepicker.css"
+      rel="stylesheet"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assates/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'assates/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'assates/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assates/css/effect.css' %}" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/static/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/static/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/static/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/static/site.webmanifest" />
+
+    <!-- Main CSS-->
+    <link
+      href="{% static 'assates/css/main.css' %}"
+      rel="stylesheet"
+      media="all"
+    />
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style type="text/css">
+      .container1 {
+        padding: 60px 50px;
+      }
+      .custom-alert-color{
+        background-color: #D75253;
+        font-weight: 800;
+      }
+      .error {
+        border: 2px solid red;
+    }
+    
+    .error-message {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="container-fluid px-lg-5">
+          <nav class="navbar navbar-expand-lg my-navbar">
+            <a class="navbar-brand" href="#"
+              ><span class="logo">
+                <img
+                  src="{% static 'assates/image/logo.png' %}"
+                  width="210"
+                  height="200"
+                  class="img-fluid"
+              /></span>
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"
+                ><i class="fas fa-bars" style="margin: 5px 0px 0px 0px"></i
+              ></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav m-auto">
+                <li class="nav-item active">
+                  <a class="nav-link font-weight-bold" href="#"
+                    >HOME<span class="sr-only"></span
+                  ></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold" href="{% url 'about' %}"
+                    >ABOUT US</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold" href="{% url 'faq' %}"
+                    >FAQ</a
+                  >
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0" action="{% url 'studentlogin' %}">
+                <div class="showcase-btn">
+                  <button
+                    class="header-btn my-2 my-sm-0 font-weight-bold"
+                    type="submit"
+                  >
+                    Student
+                  </button>
+                </div>
+              </form>
+              &nbsp;&nbsp;
+              <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}">
+                <div class="showcase-btn">
+                  <button
+                    class="header-btn my-2 my-sm-0 font-weight-bold"
+                    type="submit"
+                  >
+                    Admin
+                  </button>
+                </div>
+              </form>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content block -->
+    <div class="content">{% block content %} {% endblock %}</div>
+
+    <!-- Footer block -->
+    <!-- <footer class="footer">{% block footer %} {% endblock %}</footer> -->
+
+    <!-- Add other JavaScript scripts here -->
+  </body>
+</html>

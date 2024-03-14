@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Montserrat' sans-serif;
+}
+
+@media only screen and (min-width:1200px) {
+    .nav-item>.nav-link {
+        padding: 5px 20px !important;
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width:992px) {
+    .header-inner {
+        background-color: white!important;
+    }
+    .nav-item>.nav-link {
+        color: black!important
+    }
+    .logo {
+        color: #000 !important;
+        font-weight: 600!important;
+    }
+}
+
+.content-banner {
+    color: #ffffff;
+    min-height: 950px;;
+    width: 100%;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    padding-top: 125px;
+    background-image: url(../image/mainpic.png);
+    background-attachment: fixed;
+}
+
+.content-banner:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.content-banner-aboutus{
+    color: #ffffff;
+    min-height: 950px;
+    height: 100%;
+    position: relative;
+    background-position: center center;
+    background-size: cover;
+    padding-top: 125px;
+    background-image: url(../image/about.png);
+    background-attachment: fixed;
+}
+.content-banner-aboutus:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner-btn {
+    padding: 0 34px;
+    z-index: 1;
+    margin: 30px auto 25px;
+    line-height: 56px;
+    position: relative;
+    border-radius: 6px;
+    height: 56px;
+    font-size: 16px;
+    background-color: #E41F20;
+    display: inline-block;
+    color: #ffffff;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.banner-btn:hover {
+    text-decoration: none;
+    color: #E41F20;
+    background-color: white;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+}
+
+.header-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: transparent;
+}
+
+.logo {
+    color: #ffffff;
+}
+
+.nav-item .nav-link {
+    display: block;
+    line-height: 36px;
+    text-transform: capitalize;
+    font-size: 16px;
+    font-weight: 500;
+    color: #E41F20;
+    transition: 0.15s;
+    font-weight: bold;
+}
+
+.nav-item .nav-link:hover {
+    color: #E41F20;
+}
+
+.header-btn {
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: #E41F20;
+    border: none;
+    font-weight: 500;
+    outline: none;
+    font-size: 15px;
+    padding: 10px 25px;
+    transition: 0.5s;
+}
+
+.header-btn:hover {
+    background-color: #E41F20;
+    cursor: pointer;
+    box-shadow: 5px 5px rgba(228,31,32,.5);
+}
+
+.navbar-scroll {
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+    transition-duration: 0.6s;
+    height: 65px;
+}
+
+.navbar-scroll .nav-item .nav-link {
+    color: black;
+}
+
+.navbar-scroll .header-btn {
+    color: #ffffff;
+    background-color: #E41F20;
+}
+
+.navbar-scroll .nav-item .nav-link:hover{
+    color: #ffffff;
+    background-color: rgba(255, 0, 0);
+}
+
+.nav-item .nav-link:hover{
+    color: red;
+    background-color: white;
+    font-weight:bold;
+    border-radius: 5px;
+}
+
+.navbar-scroll .logo {
+    color: #000;
+    font-weight: 500;
+}
+
+.first-title {
+    text-transform: capitalize;
+}
+
+section {
+    background-color: white;
+    padding: 4rem 0rem 4rem;
+}
+
+section:nth-of-type(even) {
+    background-color: #E41F20;
+    color: white;
+}
+
+.glyphicon{
+    font-size: 35px;
+    color: #E41F20;
+}
+
+.glyphicon:hover{
+    animation: shake 0.6s infinite;
+}
+
+@keyframes shake{
+    0%{
+        transform: translate(0px,0px) rotate(0deg);
+    }
+    25%{
+        transform: translate(1px,1px) rotate(1deg);
+    }
+    50%{
+        transform: translate(-1px,-1px) rotate(-1deg);
+    }
+    75%{
+        transform: translate(2px,-1px) rotate(2deg);
+    }
+    100%{
+        transform: translate(-1px,1px) rotate(-1deg);
+    }
+}
+
+
+
+.p-3 {
+  padding-top: 20 !important;
+}
+
+
+.leftInfo{
+    color: #ffffff;
+    line-height: 30px;
+    background-color: black;
+    }
+
+ .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+    border-radius: 5px;
+  }

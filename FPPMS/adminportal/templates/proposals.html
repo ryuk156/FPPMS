@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/static/addAdmin/styles/reset.min.css" />
+    <link rel="stylesheet" href="/static/addAdmin/styles/style.css" />
+    <link rel="stylesheet" href="/static/addAdmin/styles/header-1.css" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+<link rel="manifest" href="/static/site.webmanifest">
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <link rel="stylesheet" href="/static/cards.css" />
+
+    <title>Project Proposals | List</title>
+    <style>
+      bs-tooltip-auto[x-placement^='bottom'] arrow::before,
+      bs-tooltip-bottom arrow::before {
+        border-bottom-color: red;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      form.example input[type='text'] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid white;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+      }
+
+      form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: red;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+      }
+
+      form.example button:hover,
+      btn btn-primary:hover {
+        background-color: rgba(255, 0, 0, 0.7);
+      }
+
+      form.example::after {
+        content: '';
+        clear: both;
+        display: table;
+      }
+      .nav-link:hover {
+        background-color: white;
+        color: black;
+      }
+      .nav-link {
+        line-height: 16px;
+        padding-top: 24px;
+      }
+      .site-header {
+        height: 64px;
+      }
+      .brand {
+        line-height: 20px;
+        height: 64px;
+      }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="60">
+    <script>
+      var proposalCount = 0;
+      var selectedProposal;
+    </script>
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">
+          <img
+            src="/static/addAdmin/logo.png"
+            width="210"
+            height="200"
+            class="img-fluid"
+          />
+        </a>
+        <nav class="nav">
+          <button class="nav__toggle" aria-expanded="false" type="button">
+            <img src="/static/addAdmin/dropdown1.jpg" />
+          </button>
+          <ul class="nav__wrapper">
+            <li class="nav__item">
+              <a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav__item">
+              <a href="{% url 'proposals' %}" class="nav-link">Proposals</a>
+            </li>
+            <li class="nav__item">
+              <a href="{% url 'addAdmin' %}" class="nav-link">Add Admin</a>
+            </li>
+            <li class="nav__item">
+              <a href="{% url 'addUser' %}" class="nav-link">Add Students</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav__item">
+              <a href="{% url 'login' %}" class="nav-link">Logout</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    {% comment %} Container {% endcomment %}
+    <div class="container text-center">
+      {% comment %} Search box {% endcomment %}
+      <form class="example">
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search.."
+          name="search"
+        />
+        <button onclick="myFunction()"><i class="fa fa-search"></i></button>
+      </form>
+      <br />
+      {% comment %} Controls {% endcomment %}
+      <div class="row status p-2 ml-5 mr-5" style="font-size: 20px">
+        <div class="col form-check form-check-inline">
+          <input
+            class="form-check-input"
+            style="width: 1.25rem; height: 1.25rem"
+            name="filter" type="radio"
+            onclick="myFunction1()"
+            id="pending"
+            value="Pending"
+          />
+          <label class="form-check-label" for="inlineCheckbox1"
+            >Pending Proposals</label
+          >
+        </div>
+        <div class="col form-check form-check-inline">
+          <input
+            class="form-check-input approved"
+            style="width: 1.25rem; height: 1.25rem"
+            name="filter" type="radio"
+            onclick="myFunction1()"
+            id="approved"
+            value="Approved"
+          />
+          <label class="form-check-label" for="inlineCheckbox2"
+            >Approved Proposals</label
+          >
+        </div>
+        <div class="col form-check form-check-inline">
+          <input
+            class="form-check-input rejected"
+            style="width: 1.25rem; height: 1.25rem"
+            name="filter" type="radio"
+            onclick="myFunction1()"
+            id="rejected"
+            value="Rejected"
+          />
+          <label class="form-check-label" for="inlineCheckbox3"
+            >Rejected Proposals</label
+          >
+        </div>
+        <div class="col form-check form-check-inline">
+          <input
+            class="form-check-input split"
+            style="width: 1.25rem; height: 1.25rem"
+            name="filter" type="radio"
+            onclick="myFunction1()"
+            id="split"
+            value="Split"
+          />
+          <label class="form-check-label" for="inlineCheckbox3"
+            >Split Proposals</label
+          >
+        </div>
+      </div><br>
+      <div id="myItems" class="row text-center">
+        {% for data in Proposalmodel%}
+        <div class="card col-sm-3">
+          <div class="card-block">
+            <h5 class="card-title">{{data.ptitle}}</h5>
+            <p class="card-name">
+              <b>{{data.fname}} {{data.lname}}</b>
+                <p class="card-user"><small class="text-muted">({{data.userType}})</small></p>
+            </p>
+            <p class="card-email">
+              <small class="text-muted">{{data.email}}</small>
+            </p>
+
+            <p class="card-status"><b>{{data.status}}</b></p>
+
+            <span
+              data-toggle="modal"
+              data-target="#updateModalCenter{{data.id}}"
+              ><a
+                class="btn btn-danger tooltip-main"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                data-original-title="Edit"
+                aria-label="edit"
+              >
+                <i class="fa fa-edit" aria-hidden="true"></i> </a
+            ></span>
+
+            <span
+              data-toggle="modal"
+              data-target="#deleteModalCenter{{data.id}}"
+              ><a
+                class="btn btn-danger tooltip-main"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                data-original-title="Delete"
+                aria-label="delete"
+              >
+                <i class="fa fa-trash-o" aria-hidden="true"></i> </a
+            ></span>
+
+            <span
+              data-toggle="modal"
+              data-target="#exampleModalCenter{{data.id}}"
+              ><a
+                class="btn btn-danger"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                data-original-title="More Info"
+                aria-label="detail"
+              >
+                <i name="info" class="fa fa-info" aria-hidden="true"></i> </a
+            ></span>
+
+            {% comment %} Delete modal {% endcomment %}
+            <div
+              class="modal fade"
+              id="deleteModalCenter{{data.id}}"
+              tabindex="-1"
+              role="dialog"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-danger">Delete Proposal</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-header">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </div>
+                  <div id="source-html1" class="modal-body">
+                    <p>
+                      Are you sure you want to delete this proposal permanantly?
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="{% url 'deleteProposal' pk=data.id %}">
+                      <button type="button" class="btn btn-secondary">
+                        Yes
+                      </button></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="modal fade"
+              id="updateModalCenter{{data.id}}"
+              tabindex="-1"
+              role="dialog"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-danger">Update Proposal</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div id="source-html1" class="modal-body">
+                    <form
+                      action="{% url 'updateProposal' pk=data.id %}"
+                      method="POST"
+                    >
+                      {% csrf_token %}
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >First Name</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.fname}}"
+                            name="fname"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Last Name</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.lname}}"
+                            name="lname"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >Phone Number</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.phone}}"
+                            name="phone"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.email}}"
+                            name="email"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                       <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">User Type</label>
+                        <div class="col-sm-4 input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="userType" required>
+                                            <option selected="selected">{{data.userType}}</option>
+                                            <option>Sponsor</option>
+                                            <option>Fanshawe Alumni</option>
+                                            <option>Organisation</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >Project Title</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.ptitle}}"
+                            name="ptitle"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >Project Description</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.pdesc}}"
+                            name="pdesc"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-4 input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="status" required>
+                                            <option selected="selected">{{data.status}}</option>
+                                            <option> Pending</option>
+                                            <option> Approved</option>
+                                            <option> Rejected</option>
+                                            <option> Split</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"
+                          >Project Website</label
+                        >
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.pwebsite}}"
+                            name="pwebsite"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Comments</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.comment}}"
+                            name="comment"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Reference</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.reference}}"
+                            name="reference"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                        <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Document</label>
+                        <div class="col-sm-9">
+                          <input
+                            type="text"
+                            class="form-control"
+                            value="{{data.document|cut:"/"}}"
+                            name="document"
+                            readonly
+                          />
+                        </div>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-secondary">
+                          Update
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% comment %} Info modal {% endcomment %}
+          <div
+            class="modal fade"
+            id="exampleModalCenter{{data.id}}"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{data.title}}
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div id="exportToDoc{{data.id}}" class="modal-body">
+                  <p><b>First Name</b>: {{data.fname}}</p>
+                  <p><b>Last Name</b>: {{data.lname}}</p>
+                  <p><b>Phone Number</b>: {{data.phone}}</p>
+                  <p><b>Email</b>: {{data.email}}</p>
+                  <p><b>User Type</b>: {{data.userType}}</p>
+                  <p><b>Project Title</b>: {{data.ptitle}}</p>
+                  <p><b>Project Description</b>: {{data.pdesc}}</p>
+                  <p><b>Project Status</b>: {{data.status}}</p>
+                  <p><b>Project Website</b>: {{data.pwebsite}}</p>
+                  <p><b>Comments</b>: {{data.comment}}</p>
+                  <p><b>Reference</b>: {{data.reference}}</p>
+
+                  <p><b>Document Name</b>: <a download href="/downloadfile{{ data.document }} ">{{data.document|cut:"/"}}</a> </p>
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    onclick="exportHTML('exportToDoc{{data.id}}');"
+                    class="btn btn-secondary"
+                  >
+                    Export to Doc
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <script>
+        function myFunction1() {
+          var status, i, cardContainer, cards, input, filter;
+
+          console.log(filter);
+          cardContainer = document.getElementById('myItems');
+          cards = cardContainer.getElementsByClassName('card');
+
+          if (pending.checked == true) {
+            input = 'pending';
+            filter = input.toUpperCase();
+            for (i = 0; i < cards.length; i++) {
+              status = cards[i].querySelector('.card-block p.card-status');
+
+              if (status.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = '';
+              } else {
+                cards[i].style.display = 'none';
+              }
+            }
+          }
+          if (approved.checked == true) {
+            input = 'approved';
+            filter = input.toUpperCase();
+            for (i = 0; i < cards.length; i++) {
+              status = cards[i].querySelector('.card-block p.card-status');
+
+              if (status.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = '';
+              } else {
+                cards[i].style.display = 'none';
+              }
+            }
+          }
+          if (rejected.checked == true) {
+            input = 'rejected';
+            filter = input.toUpperCase();
+            for (i = 0; i < cards.length; i++) {
+              status = cards[i].querySelector('.card-block p.card-status');
+
+              if (status.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = '';
+              } else {
+                cards[i].style.display = 'none';
+              }
+            }
+          }
+          if (split.checked == true) {
+            input = 'split';
+            filter = input.toUpperCase();
+            for (i = 0; i < cards.length; i++) {
+              status = cards[i].querySelector('.card-block p.card-status');
+
+              if (status.innerText.toUpperCase().indexOf(filter) > -1) {
+                cards[i].style.display = '';
+              } else {
+                cards[i].style.display = 'none';
+              }
+            }
+          }
+          if (
+            pending.checked == false &&
+            approved.checked == false &&
+            rejected.checked == false &&
+            split.checked == false
+          ) {
+            for (i = 0; i < cards.length; i++) {
+              cards[i].style.display = '';
+            }
+          }
+        }
+
+        function myFunction() {
+          var input, filter, cards, cardContainer, h3, i;
+          var title,
+            fname,
+            lname,
+            userType,
+            status,
+            email,
+            name,
+            pending,
+            approved,
+            rejected,
+            split;
+          input = $('#myInput').val();
+          filter = input.toUpperCase();
+          console.log(filter);
+          cardContainer = document.getElementById('myItems');
+          cards = cardContainer.getElementsByClassName('card');
+          console.log(cards)
+
+          for (i = 0; i < cards.length; i++) {
+            title = cards[i].querySelector('.card-block h4.card-title');
+            console.log(title);
+            name = cards[i].querySelector('.card-block p.card-name');
+            email = cards[i].querySelector('.card-block p.card-email');
+            userType = cards[i].querySelector('.card-block p.card-user');
+
+            if (
+              title.innerText.toUpperCase().indexOf(filter) > -1 ||
+              email.innerText.toUpperCase().indexOf(filter) > -1 ||
+              name.innerText.toUpperCase().indexOf(filter) > -1 ||
+              userType.innerText.toUpperCase().indexOf(filter) > -1
+            ) {
+              cards[i].style.display = '';
+            } else {
+              cards[i].style.display = 'none';
+            }
+          }
+        }
+      </script>
+
+      <script>
+        /* HTML to Microsoft Word Export Demo
+         * This code demonstrates how to export an html element to Microsoft Word
+         * with CSS styles to set page orientation and paper size.
+         * Tested with Word 2010, 2013 and FireFox, Chrome, Opera, IE10-11
+         * Fails in legacy browsers (IE<10) that lack window.Blob object
+         */
+        function exportHTML(id) {
+          var header =
+            "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+            "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+            "xmlns='http://www.w3.org/TR/REC-html40'>" +
+            "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+          var footer = '</body></html>';
+          var sourceHTML =
+            header + document.getElementById(id).innerHTML + footer;
+
+          var source =
+            'data:application/vnd.ms-word;charset=utf-8,' +
+            encodeURIComponent(sourceHTML);
+          var fileDownload = document.createElement('a');
+          document.body.appendChild(fileDownload);
+          fileDownload.href = source;
+          fileDownload.download = 'proposal.doc';
+          fileDownload.click();
+          document.body.removeChild(fileDownload);
+        }
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+      <link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+      <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+      </script>
+      <script src="/static/addAdmin/js/header-1.js"></script>
+    </div>
+
+      <footer class="page-footer bg-dark text-white font-small elegant-color">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">©️ 2023 Copyright:
+      <a href="#" class="text-white"> Fanshawe Project Proposal Management system </a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Default Statcounter code for Fanshawe Project Proposals
+https://www.fanshaweprojectproposals.ca -->
+<script type="text/javascript">
+var sc_project=12825717;
+var sc_invisible=1;
+var sc_security="8b444c69";
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="Web Analytics
+Made Easy - Statcounter" href="https://statcounter.com/"
+target="_blank"><img class="statcounter"
+src="https://c.statcounter.com/12825717/0/8b444c69/1/"
+alt="Web Analytics Made Easy - Statcounter"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+  </body>
+</html>

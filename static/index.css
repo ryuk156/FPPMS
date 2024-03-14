@@ -1,0 +1,33 @@
+*{
+	margin:0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: 'Poppins', sans-serif;
+	background-image: url("bg4.jpg");
+}
+
+.avatar{
+	width: 100px;
+}
+
+.login-content{
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.input-div{
+	display: grid;
+	grid-template-columns: 7% 93%;
+	margin:20px 0px;
+	padding:5px 0px;
+	border-bottom: 2px solid red;
+}
+
+form{
+	margin-top: 100px;
+	margin-left: 45px;
+}

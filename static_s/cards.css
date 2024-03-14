@@ -1,0 +1,43 @@
+.admin{
+    margin-top: 8px;
+}
+.container{
+background-color: #ff9690;
+padding: 20px;
+}
+.card{
+    margin-left: 65px;
+    margin-bottom: 25px;
+    padding-top: 15px;
+    border-radius: 10px;
+    height:19rem;
+    min-width: 20% !important;  
+  }
+
+.card:hover{
+box-shadow: 6px 6px 6px #E41F20;
+}
+.card-title{
+color: #E41F20;
+}
+.iconspanel{
+background-color: red;
+border-radius: 5px;
+}
+.icons{
+border: white 1px solid;
+}
+
+i{
+color: white;
+}
+.btn-danger{
+height: 40px;
+width: 40px
+}
+
+.status[data-status="Approved"]{
+color : green;
+}
+
+

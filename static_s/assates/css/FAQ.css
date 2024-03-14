@@ -1,0 +1,191 @@
+*,
+*::before,
+*::after{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: inherit;
+}
+.parallax-image-faq{
+	background-image: url("../image/faq11.png");
+	height: 550px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+html{
+	font-family: 'Roboto', sans-serif;
+	font-size: 11px;
+	box-sizing: border-box;
+}
+.admin{
+      margin-top: 8px;
+    }
+
+
+    .navbar-default .navbar-nav>li>a{
+      color: #ffffff;
+    }
+    .navbar-default .navbar-nav>li>a:hover{
+      color: red;
+      background-color:#ffffff;
+      border-radius: 2px;
+    }
+     .navbar {
+    margin-bottom: 0;
+    color: #E41F20;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: black !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+  }
+section{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.container-fluid{
+	width: 100%;
+	max-width: 80rem;
+	margin:0 auto;
+	padding: 0 1.5rem;
+}
+
+.accordian-item{
+	background-color: #FFCCCB;
+	border-radius: .4rem;
+	margin-bottom: 1rem;
+	padding: 1rem;
+	box-shadow: .5rem 2px .5rem rgba(0,0,0,.1);
+    border: 1px solid red;
+}
+
+
+.accordian-link{
+	font-size: 1.6rem;
+	color: white;
+	text-decoration: none;
+	/*background-color: #283042;*/
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 0;
+}
+
+
+
+.accordian-link{
+	color: red;
+	padding: .5rem;
+}
+
+.answer{
+	max-height: 0;
+	overflow: hidden;
+	position: relative;
+	background-color: #FFCCCB;
+	transition: max-height 650ms;
+}
+
+.answer::before{
+	content: "";
+	position: absolute;
+	width: .6rem;
+	height: 90%;
+	background-color: #E41F20;
+	top:50%;
+	left: 0;
+	transform: translateY(-50%);
+
+}
+
+.answer p{
+	color: black;
+	font-size: 1.4rem;
+	padding: 2rem;
+}
+
+.accordian-item:target .answer{
+	max-height: 20rem;
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+
+/*=== Trigger  ===*/
+.animate {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/*=== Optional Delays, change values here  ===*/
+.one {
+-webkit-animation-delay: 0.5s;
+-moz-animation-delay: 0.5s;
+animation-delay: 0.5s;
+}
+
+/*==== FADE IN UP ===*/
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+a:focus, a:hover{
+
+		color: red;
+}
+
+.header-btn{
+      margin-right: -100px;
+}
