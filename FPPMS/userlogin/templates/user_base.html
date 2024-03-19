@@ -22,6 +22,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    {% csrf_token %}
     <a class="navbar-brand" href="{% if user.is_authenticated  %} {% url 'studentdashboard'%} {% endif %}">
         <span class="logo">
             <img src="{% static 'assates/image/logo.png' %}" width="210" height="200" class="img-fluid"></span>

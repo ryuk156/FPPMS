@@ -16,8 +16,8 @@
 {% block content %}
 <div class="container pt-4" >
    
-
-    <h2>All Milestones</h2>
+    {% csrf_token %}
+    <h2>Milestones Progress</h2>
     
     <div class="list-group ">
         {% if milestones %}

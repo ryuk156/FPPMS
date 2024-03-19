@@ -43,9 +43,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'adminlogin',
     'userlogin',
-    'ckeditor'
+    'ckeditor',
+    
     
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://aa68-205-211-143-33.ngrok-free.app']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -58,6 +61,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'FPPMS.urls'
+
 
 TEMPLATES = [
     {

@@ -26,6 +26,7 @@ from django.contrib.auth.forms import UserCreationForm
 import pandas as pd
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from django import forms
 
@@ -69,7 +70,7 @@ def addAdmin(request):
         return redirect('home')
     return render(request, 'addAdmin.html')
 
-
+@login_required
 def dashboard(request):
     approved = 0
     rejected = 0
@@ -280,6 +281,9 @@ def allMilestones(request):
     return render(request, 'allMilestones.html',{'milestones':milestones})
    
     
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 def deleteUser(request, user_id):
     # Check if the user making the request is a staff user
     if request.user.is_staff:
@@ -289,18 +293,17 @@ def deleteUser(request, user_id):
             # Delete the user
             user_to_delete.delete()
             # Provide a success message
-            message = "User deleted successfully."
+            messages.success(request, "User deleted successfully.")
+            return render(request, 'dashboard.html')
         except User.DoesNotExist:
             # If the user with the specified ID does not exist, provide an error message
-            message = "User does not exist."
+            messages.error(request, "User does not exist.")
     else:
         # If the user making the request is not a staff user, provide an error message
-        message = "You are not authorized to delete users."
+        messages.error(request, "You are not authorized to delete users.")
     
     # Query for users or any other necessary data to render the page
     users = User.objects.all()
     
     # Render the template with appropriate context
-    return redirect(request, 'dashboard.html', {'message': message, 'users': users})
-
-
+    return render(request, 'dashboard.html')

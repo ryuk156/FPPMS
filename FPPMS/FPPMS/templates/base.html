@@ -110,102 +110,119 @@
       .container1 {
         padding: 60px 50px;
       }
-      .custom-alert-color{
-        background-color: #D75253;
+      .custom-alert-color {
+        background-color: #d75253;
         font-weight: 800;
       }
       .error {
         border: 2px solid red;
-    }
-    
-    .error-message {
+      }
+
+      .error-message {
         color: red;
         font-size: 12px;
         margin-top: 5px;
-    }
-    
+      }
     </style>
   </head>
 
   <body>
-    <header class="header">
-      <div class="header-inner">
-        <div class="container-fluid px-lg-5">
-          <nav class="navbar navbar-expand-lg my-navbar">
-            <a class="navbar-brand" href="#"
-              ><span class="logo">
-                <img
-                  src="{% static 'assates/image/logo.png' %}"
-                  width="210"
-                  height="200"
-                  class="img-fluid"
-              /></span>
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      {% csrf_token %}
+      <a class="navbar-brand" href="#"
+        ><span class="logo">
+          <img
+            src="{% static 'assates/image/logo.png' %}"
+            width="210"
+            height="200"
+            class="img-fluid"
+        /></span>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item active">
+            <a class="nav-link font-weight-bold" href="#"
+              >HOME<span class="sr-only"></span
+            ></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" href="{% url 'about' %}"
+              >ABOUT US</a
             >
-              <span class="navbar-toggler-icon"
-                ><i class="fas fa-bars" style="margin: 5px 0px 0px 0px"></i
-              ></span>
-            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link font-weight-bold" href="{% url 'faq' %}">FAQ</a>
+          </li>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav m-auto">
-                <li class="nav-item active">
-                  <a class="nav-link font-weight-bold" href="#"
-                    >HOME<span class="sr-only"></span
-                  ></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link font-weight-bold" href="{% url 'about' %}"
-                    >ABOUT US</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link font-weight-bold" href="{% url 'faq' %}"
-                    >FAQ</a
-                  >
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0" action="{% url 'studentlogin' %}">
-                <div class="showcase-btn">
-                  <button
-                    class="header-btn my-2 my-sm-0 font-weight-bold"
-                    type="submit"
-                  >
-                    Student
-                  </button>
-                </div>
-              </form>
-              &nbsp;&nbsp;
-              <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}">
-                <div class="showcase-btn">
-                  <button
-                    class="header-btn my-2 my-sm-0 font-weight-bold"
-                    type="submit"
-                  >
-                    Admin
-                  </button>
-                </div>
-              </form>
+          <!-- <form class="form-inline my-2 my-lg-0" action="{% url 'login' %}">
+            <div class="showcase-btn">
+              <button
+                class="header-btn my-2 my-sm-0 font-weight-bold"
+                type="submit"
+              >
+                Admin
+              </button>
             </div>
-          </nav>
+          </form> -->
+        </ul>
+
+        <!-- <div class="showcase-btn">
+            <button
+              class="header-btn my-2 my-sm-0 font-weight-bold"
+              type="submit" 
+              onclick="openModal()"
+            >
+             Login
+            </button>
+          </div> -->
+        <div>
+          <button
+            type="button"
+            class="header-btn my-2 my-sm-0 font-weight-bold"
+            data-toggle="modal"
+            data-target=".bd-example-modal-sm"
+          >
+            Login
+          </button>
         </div>
+
+        <!-- <ul class="navbar-nav mr-auto">
+              {% if user.is_authenticated %}
+                  <li class="nav-item {% if request.path == '/userlogin/studentdashboard' %}active{% endif %}">
+                      <a class="nav-link" href="studentdashboard">Home</a>
+                  </li>
+              {% endif %}
+              {% if user.is_authenticated %}
+                  <li class="nav-item {% if request.path == '/userlogin/createmilestone' %}active{% endif %}">
+                      <a class="nav-link" href="createmilestone">Create Milestone</a>
+                  </li>
+              {% endif %}
+          </ul> -->
       </div>
-    </header>
+    </nav>
 
     <!-- Content block -->
-    <div class="content">{% block content %} {% endblock %}</div>
+    <div class="content" style="margin-top: 20px">
+      
+      {% block content %} {% endblock %}
+    </div>
 
     <!-- Footer block -->
     <!-- <footer class="footer">{% block footer %} {% endblock %}</footer> -->
 
     <!-- Add other JavaScript scripts here -->
   </body>
+
+ 
 </html>
