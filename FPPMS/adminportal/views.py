@@ -30,10 +30,14 @@ from django.contrib.auth.decorators import login_required
 
 from django import forms
 
+from django.contrib.auth.views import LoginView
+
+from django.urls import reverse
 
 
 
-@api_view(['GET'])
+
+@login_required(login_url='adminlogin/login_user')
 def displayProposal(request):
     if request.method == 'GET':
         results = Proposalmodel.objects.all()
@@ -41,7 +45,13 @@ def displayProposal(request):
        
         return Response(serialize.data)
 
+class AdminLoginView(LoginView):
+    template_name = 'admin_login.html'  # Template for admin login
 
+    def get_success_url(self):
+        # Redirect admin user to admin dashboard after login
+        return reverse('dashboard') 
+@login_required(login_url='adminlogin/login_user')
 def displayProposalList(request):
     results = Proposalmodel.objects.all()
     
@@ -58,7 +68,7 @@ def displayProposalList(request):
 # def addAdmin(request):
 #     results = Proposalmodel.objects.all()
 #     return render(request, "addAdmin.html",{'Proposalmodel':results})
-
+@login_required(login_url='adminlogin/login_user')
 def addAdmin(request):
     # print(request.method)
     if request.method == 'POST':
@@ -73,7 +83,7 @@ def addAdmin(request):
         return redirect('home')
     return render(request, 'addAdmin.html')
 
-@login_required
+@login_required(login_url='adminlogin/login_user')
 def dashboard(request):
     approved = 0
     rejected = 0
@@ -109,9 +119,9 @@ def dashboard(request):
         'all_non_staff_users': all_non_staff_users
 
     }
-    return render(request, "dashboard.html", final)
+    return render(request, "dashboard.html", {"final" :final, "user": User})
 
-
+@login_required(login_url='adminlogin/login_user')
 def delete(request, pk):
     Proposalmodel.objects.filter(pk=pk).delete()
     results = Proposalmodel.objects.all()
@@ -131,7 +141,7 @@ def delete(request, pk):
 #         return render(request, "proposals.html", {'Proposalmodel': results})
 #     return render(request, "proposals.html")
 
-
+@login_required(login_url='adminlogin/login_user')
 def update(request, pk):
     # TODO: clean data here
     payload = {}
@@ -245,7 +255,7 @@ class ExcelUploadForm(forms.Form):
 
 #     return render(request, 'addUser.html')
     
-
+@login_required(login_url='adminlogin/login_user')
 def addSingleUser(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -261,7 +271,7 @@ def addSingleUser(request):
     else:
         return render(request, 'addUser.html')
 
-
+@login_required(login_url='adminlogin/login_user')
 def addUser(request):
     if request.method == 'POST':
         form = ExcelUploadForm(request.POST, request.FILES)
@@ -282,7 +292,7 @@ def addUser(request):
 
 
 
-
+@login_required(login_url='adminlogin/login_user')
 def allMilestones(request):
     milestones = MilestoneModel.objects.all()
     return render(request, 'allMilestones.html',{'milestones':milestones})
@@ -290,7 +300,7 @@ def allMilestones(request):
     
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
+@login_required(login_url='adminlogin/login_user')
 def deleteUser(request, user_id):
     # Check if the user making the request is a staff user
     if request.user.is_staff:
@@ -301,7 +311,7 @@ def deleteUser(request, user_id):
             user_to_delete.delete()
             # Provide a success message
             messages.success(request, "User deleted successfully.")
-            return render(request, 'dashboard.html')
+            return redirect('dashboard.html')
         except User.DoesNotExist:
             # If the user with the specified ID does not exist, provide an error message
             messages.error(request, "User does not exist.")
@@ -314,3 +324,5 @@ def deleteUser(request, user_id):
     
     # Render the template with appropriate context
     return render(request, 'dashboard.html')
+
+

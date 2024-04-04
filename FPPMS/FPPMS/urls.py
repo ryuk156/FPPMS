@@ -50,6 +50,7 @@ urlpatterns = [
     path('userlogin/', include('userlogin.urls')),
     path('allMilestones',adminportal_views.allMilestones,name="allMilestones"),
     path('deleteUser/<int:user_id>/', adminportal_views.deleteUser, name="deleteUser"),
+    path('adminlogin/login_user', adminportal_views.AdminLoginView.as_view(), name='login_user'),
    
     # path('upload_excel',adminportal_views.upload_excel,name="upload_excel"),
     

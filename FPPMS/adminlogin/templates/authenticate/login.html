@@ -13,18 +13,31 @@
 <link rel="manifest" href="/static/site.webmanifest">
 </head>
 <body>
-	<img class="wave" src="/static/789.jpg">
-	<div class="container">
-		<div class="img">
-			<!-- <img src="img/bg.svg"> -->
-		</div>
-		<div class="login-content">
+	
+	<div style="
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40px;
+  ">
+		
+		<div class="login-content" style="
+		background-color: #f2f2f2;
+		border: 3px solid transparent;
+		border-radius: 20px;
+		padding: 20px;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		padding: 1rem;
+		margin-bottom: 1.25rem;
+		border-radius: 0.5rem;
+	  ">
 			<form method="POST">
 				{% csrf_token %}
 
-				<img src="/static/img/avatar.svg">
+				<img src="/static/img/professor.png">
 
-				<h2 class="">Welcome</h2>
+				<h2 class="">Welcome Professor</h2>
       			<h4>"Happy to have you back"</h4><br>
 
            		<div class="input-div one">

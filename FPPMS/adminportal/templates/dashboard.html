@@ -87,9 +87,9 @@ font-size:30px;
               <li class="nav__item"><a href="{%url 'proposals' %}" class="nav-link">Proposals</a></li>
              <li class="nav__item"><a href="{% url 'addAdmin' %}" class="nav-link">Add Admin</a></li>
              <li class="nav__item"><a href="{% url 'addUser' %}" class="nav-link">Add Students</a></li>
-              {% if user.is_authenticated %}
-              <li class="nav__item"><a href="{% url 'login' %}" class="nav-link">Logout</a></li>
-              {% endif %}
+             {% if user.is_authenticated %}
+    <li class="nav__item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+{% endif %}
             </ul>
           </nav>
         </div>
@@ -101,7 +101,7 @@ font-size:30px;
     <div class="card bg-primary text-white">
       <h3 class="h4">Pending Proposals</h3></br>
       <h4><i class="fa fa-list-ul"></i></h4><br>
-      <span class="count"><h4>{{pending}}</h4></span>
+      <span class="count"><h4>{{final.pending}}</h4></span>
     </div>
   </div>
 
@@ -109,7 +109,7 @@ font-size:30px;
     <div class="card bg-success text-white">
       <h3 class="h4">Accepted Proposals</h3><br>
       <h4><i class="fas fa-check"></i></h4></br>
-      <span class="count"><h4>{{approved}}</h4></span>
+      <span class="count"><h4>{{final.approved}}</h4></span>
     </div>
   </div>
 
@@ -117,7 +117,7 @@ font-size:30px;
     <div class="card bg-danger text-white">
       <h4 class="h4">Rejected Proposals</h4><br>
       <h4><i class="fa fa-ban"></i></h4></br>
-      <span class="count"><h4>{{rejected}}</h4></span>
+      <span class="count"><h4>{{final.rejected}}</h4></span>
     </div>
   </div>
 
@@ -125,7 +125,7 @@ font-size:30px;
     <div class="card bg-warning text-white">
       <h4 class="h4">Split Proposals</h4><br>
       <h4><i class="fa fa-chain-broken"></i></h4></br>
-      <span class="count"><h4>{{split}}</h4></span>
+      <span class="count"><h4>{{final.split}}</h4></span>
     </div>
   </div>
 </div>
@@ -136,8 +136,8 @@ font-size:30px;
       <h4 class="h4">Number of Proposals</h4><br>
       <h4><i class="fa fa-sticky-note-o"></i></h4></br>
       <span class="count"><h4>
-        {% if Proposalmodel %}
-        {{ Proposalmodel|length }}
+        {% if final.Proposalmodel %}
+        {{ final.Proposalmodel|length }}
         {% else %}
         0
         {% endif %}
@@ -148,7 +148,7 @@ font-size:30px;
     <div class="card bg-secondary text-white">
         <h4 class="h4">All Admins</h4><br>
         <h4><i class="fas fa-user-shield"></i></h4></br>
-        <span class="count"><h4>{{ adminCount }}</h4></span>
+        <span class="count"><h4>{{ final.adminCount }}</h4></span>
     </div>
 </div>
 
@@ -157,7 +157,7 @@ font-size:30px;
       <div class="card bg-secondary text-white">
         <h4 class="h4">All Milestones</h4><br>
         <h4><i class="fas fa-user-shield"></i></h4></br>
-        <span class="count"><h4>{{allMilestones}}</h4></span>
+        <span class="count"><h4>{{final.allMilestones}}</h4></span>
       </div>
     </a>
   </div>
@@ -167,7 +167,7 @@ font-size:30px;
       <div class="card bg-secondary text-white">
         <h4 class="h4">All Students</h4><br>
         <h4><i class="fas fa-user-shield"></i></h4></br>
-        <span class="count"><h4>{{user}}</h4></span>
+        <span class="count"><h4>{{final.user}}</h4></span>
       </div>
     
   </div>
