@@ -10,5 +10,6 @@ urlpatterns = [
     path('createmilestone', views.student_createmilestone, name='createmilestone'),
     path('studentLogout', views.student_Logout, name='studentLogout'),
     path('milestone/<int:milestone_id>/delete/', views.delete_milestone, name='delete_milestone'),
+    path('milestone/<int:milestone_id>/update/', views.update_milestone, name='update_milestone'),
     path('studentlogin', LoginView.as_view(), name='redirectlogin'),
 ]

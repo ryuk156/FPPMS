@@ -15,7 +15,11 @@
 
 {% block content %}
 <div class="container pt-4" >
-   
+   {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
     {% csrf_token %}
     <h2>Milestones Progress</h2>
     
@@ -31,6 +35,10 @@
                     <form action="{% url 'delete_milestone' milestone.id %}" method="post" style="display: inline;">
                         {% csrf_token %}
                         <input type="submit"  class="btn btn-danger" value="Delete">
+                    </form>
+                    <form action="{% url 'update_milestone' milestone.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="submit"  class="btn btn-primary" value="Update">
                     </form>
                 </div>
             {% endfor %}

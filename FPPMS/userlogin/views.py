@@ -86,3 +86,21 @@ def student_createmilestone(request):
     
 
 
+@login_required
+def update_milestone(request, milestone_id):
+    milestone = get_object_or_404(MilestoneModel, pk=milestone_id)
+    
+    if request.user != milestone.mileStoneAuthor:
+        # Optionally, handle unauthorized access (e.g., return an error page)
+        return HTTPResponse("You are not authorized to update this milestone.")
+
+    if request.method == 'POST':
+        form = MileStoneForm(request.POST, instance=milestone)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Milestone updated successfully.')
+            return redirect('studentdashboard') 
+    else:
+        form = MileStoneForm(instance=milestone)
+    
+    return render(request, 'authentication/update_milestone.html', {'form': form, 'milestone': milestone})
