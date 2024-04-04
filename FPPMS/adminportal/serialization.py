@@ -4,7 +4,12 @@ from FPPMS.models import Proposalmodel
 
 
 class AdminSerializationClass(serializers.ModelSerializer):
+    assignedTo = serializers.SerializerMethodField()
+
     class Meta:
-        model=Proposalmodel
-        fields='__all__'
+        model = Proposalmodel
+        fields = '__all__'
+
+    def get_assignedTo(self, obj):
+        return [user.username for user in obj.assignedTo.all()]
         

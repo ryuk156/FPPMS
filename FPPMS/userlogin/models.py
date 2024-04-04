@@ -1,7 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django import forms
+from django.contrib.auth.models import AbstractUser
+
+
 from ckeditor.fields import RichTextField
+
+
 
 class ExcelUploadForm(forms.Form):
     excel_file = forms.FileField()
@@ -16,3 +21,7 @@ class MilestoneModel(models.Model):
 
     def __str__(self):
         return self.mileStoneTitle
+    
+
+
+

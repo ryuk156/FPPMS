@@ -30,21 +30,34 @@
     <link rel="manifest" href="/static/site.webmanifest" />
   </head>
   <body>
-    <img class="wave" src="/static/789.jpg" />
-    <div class="container">
-      <div class="img">
-        <!-- <img src="img/bg.svg"> -->
-      </div>
-      <div class="login-content">
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+      "
+    >
+      <div
+        class="login-content"
+        style="
+          background-color: #f2f2f2;
+          border: 3px solid transparent;
+          border-radius: 20px;
+          padding: 20px;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+          padding: 1rem;
+          margin-bottom: 1.25rem;
+          border-radius: 0.5rem;
+        "
+      >
         <form method="POST">
           {% csrf_token %}
-
           <img src="/static/img/avatar.svg" />
-
           <h2 class="">Welcome Students</h2>
           <h4>"Happy to have you back"</h4>
           <br />
-
           <div class="input-div one">
             <div class="i">
               <i class="fas fa-user"></i>
@@ -54,7 +67,6 @@
               <input type="text" name="username" class="input" />
             </div>
           </div>
-
           <div class="input-div pass">
             <div class="i">
               <i class="fas fa-lock"></i>
@@ -64,28 +76,31 @@
               <input type="password" name="password" class="input" />
             </div>
           </div>
-
-          <a href="{% url 'forgotpassword'%}">Forgot Password?</a>
+         
+           
+            
+            
           <input type="submit" class="btn" value="Login" />
-
-          <!-- {% if messages %}
-				<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					{% for message in messages %}
-					<div class="alert alert-{{ message.tags }}" role="alert">
-						<p style="color:red">{{ message }}</p>
-					</div>
-					{% endfor %}
-					</div>
-
-				</div>
-				{% endif %} -->
-          <a href="https://fanshaweprojectproposals.ca"
-            >Return to Main Home Page</a
-          >
+          {% if messages %}
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}" role="alert">
+                <p style="color: red">{{ message }}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          <div >
+            <a  style="text-align: center !important" href="https://fanshaweprojectproposals.ca"
+              >Return to Main Home Page</a
+            >
+          </div>
         </form>
       </div>
     </div>
+
     <script type="text/javascript" src="/static/js/main.js"></script>
   </body>
 </html>

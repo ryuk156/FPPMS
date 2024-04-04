@@ -6,16 +6,23 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 import requests
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import AbstractUser
+from django.db import models
 from .forms import MileStoneForm
 from .models import MilestoneModel
 from django.shortcuts import get_object_or_404
+
+
+
+
 
 #studenthome
 def student_home(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+        
+
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)

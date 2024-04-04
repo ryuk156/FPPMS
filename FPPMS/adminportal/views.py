@@ -38,13 +38,16 @@ def displayProposal(request):
     if request.method == 'GET':
         results = Proposalmodel.objects.all()
         serialize = AdminSerializationClass(results, many=True)
+       
         return Response(serialize.data)
 
 
 def displayProposalList(request):
     results = Proposalmodel.objects.all()
+    
     serialize = AdminSerializationClass(results, many=True)
-    return render(request, 'proposals.html', {'Proposalmodel': serialize.data})
+    print(serialize.data)
+    return render(request, 'proposals.html', {'Proposalmodel': serialize.data, 'users': User.objects.all()})
 
 # callapi = requests.get('https:///displayProposal')
 # results = callapi.json()
@@ -143,6 +146,10 @@ def update(request, pk):
     payload['pwebsite'] = request.POST["pwebsite"]
     payload['comment'] = request.POST["comment"]
     payload['reference'] = request.POST["reference"]
+    assigned_to_id = request.POST.get("assignedTo")
+    if assigned_to_id:
+        payload['assignedTo'] = assigned_to_id
+
     # payload['document'] = request.POST["document"]
 
     # save

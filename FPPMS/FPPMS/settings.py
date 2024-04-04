@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor',
     
     
+    
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://aa68-205-211-143-33.ngrok-free.app']
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'FPPMS.urls'
@@ -157,4 +159,5 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'fppms.fanshawe@gmail.com'
 EMAIL_HOST_PASSWORD = 'vazjzcykmhfshiho'
+LOGIN_URL = 'studentlogin'
 #EMAIL_HOST_PASSWORD = 'Fanshawe@lscfps' //gmail password to login

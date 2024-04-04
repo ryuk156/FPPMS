@@ -2,6 +2,7 @@ from typing import Reversible
 from django.db import models
 from django.dispatch import receiver
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Proposalmodel(models.Model):
     title=models.CharField(max_length=250)
@@ -17,6 +18,8 @@ class Proposalmodel(models.Model):
     comment=models.CharField(max_length=133234250)
     reference=models.CharField(max_length=250)
     document=models.FileField(blank=True, null=True)
+    assignedTo= models.ManyToManyField(User, related_name='assigned_students', blank=True)
+
     
     
     class Meta:
