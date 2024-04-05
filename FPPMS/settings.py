@@ -120,7 +120,10 @@ MEDIA_ROOT = '/home/FPPMS/FPPMS/media'
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/userlogin/studenthome/'
-CKEDITOR_BASEPATH = "/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static_s/ckeditor/ckeditor/"
+
+CKEDITOR_BASEPATH =  BASE_DIR / 'static_s/ckeditor/ckeditor/'
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
