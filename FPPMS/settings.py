@@ -118,8 +118,6 @@ USE_TZ = True
 
 MEDIA_ROOT = '/home/FPPMS/FPPMS/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static'
-STATIC_URL = '/static/'
 
 LOGIN_URL = '/userlogin/studenthome/'
 CKEDITOR_BASEPATH = "/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static_s/ckeditor/ckeditor/"

@@ -138,11 +138,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    '/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static'
+    BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = '/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static_s'
-
+STATIC_ROOT = BASE_DIR / 'static_s'
 
 
 

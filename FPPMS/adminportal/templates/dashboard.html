@@ -198,7 +198,7 @@ font-size:30px;
                       </tr>
                   </thead>
                   <tbody>
-                      {% for admin in admins %}
+                      {% for admin in final.admins %}
                       <tr>
                           <td>{{ admin.username }}</td>
                           <td>{{ admin.date_joined }}</td>
@@ -235,7 +235,7 @@ font-size:30px;
                       </tr>
                   </thead>
                   <tbody>
-                      {% for user in all_non_staff_users %}
+                      {% for user in final.all_non_staff_users %}
                       <tr>
                           <td>{{ user.username }}</td>
                           <td>{{ user.date_joined }}</td>
