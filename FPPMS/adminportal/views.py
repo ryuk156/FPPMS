@@ -1,4 +1,6 @@
 from decimal import Context, ConversionSyntax
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 import json
 import os
 import re
@@ -56,7 +58,7 @@ def displayProposalList(request):
     results = Proposalmodel.objects.all()
     
     serialize = AdminSerializationClass(results, many=True)
-    print(serialize.data)
+   
     return render(request, 'proposals.html', {'Proposalmodel': serialize.data, 'users': User.objects.all()})
 
 # callapi = requests.get('https:///displayProposal')
@@ -141,35 +143,45 @@ def delete(request, pk):
 #         return render(request, "proposals.html", {'Proposalmodel': results})
 #     return render(request, "proposals.html")
 
+
 @login_required(login_url='adminlogin/login_user')
 def update(request, pk):
-    # TODO: clean data here
-    payload = {}
-    payload['fname'] = request.POST["fname"]
-    payload['lname'] = request.POST["lname"]
-    payload['phone'] = request.POST["phone"]
-    payload['email'] = request.POST["email"]
-    payload['userType'] = request.POST["userType"]
-    payload['ptitle'] = request.POST["ptitle"]
-    payload['pdesc'] = request.POST["pdesc"]
-    payload['status'] = request.POST["status"]
-    payload['pwebsite'] = request.POST["pwebsite"]
-    payload['comment'] = request.POST["comment"]
-    payload['reference'] = request.POST["reference"]
-    assigned_to_id = request.POST.get("assignedTo")
-    if assigned_to_id:
-        payload['assignedTo'] = assigned_to_id
+    try:
+        # Get the existing Proposalmodel instance
+        proposal = get_object_or_404(Proposalmodel, id=pk)
 
-    # payload['document'] = request.POST["document"]
+        # Extract all fields from POST data
+        payload = {
+            'fname': request.POST.get("fname", ""),
+            'lname': request.POST.get("lname", ""),
+            'phone': request.POST.get("phone", ""),
+            'email': request.POST.get("email", ""),
+            'userType': request.POST.get("userType", ""),
+            'ptitle': request.POST.get("ptitle", ""),
+            'pdesc': request.POST.get("pdesc", ""),
+            'status': request.POST.get("status", ""),
+            'pwebsite': request.POST.get("pwebsite", ""),
+            'comment': request.POST.get("comment", ""),
+            'reference': request.POST.get("reference", ""),
+            'assignedTo': request.POST.get("assignedTo", ""),
+        }
 
-    # save
-    proposal = Proposalmodel.objects.get(id=pk)
-    serializer = AdminSerializationClass(proposal, data=payload, partial=True)
-    serializer.is_valid(raise_exception=True)
-    serializer.save()
+        # Directly update the assignedTo field if assigned_to_id is provided
+        assigned_to_id = request.POST.get('assignedTo')
+        if assigned_to_id:
+            proposal.assignedTo_id = assigned_to_id
+            proposal.save()
 
-    return redirect('proposals')
+        # Use serializer to update other fields
+        serializer = AdminSerializationClass(instance=proposal, data=payload, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
 
+        return redirect('proposals')
+
+    except Exception as e:
+        # Handle any exceptions that may occur during the update process
+        return JsonResponse({'error': str(e)}, status=400)
     # in case you want to return the json of the data
     # result = serializer.data
     # return JsonResponse(result)

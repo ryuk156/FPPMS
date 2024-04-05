@@ -18,7 +18,7 @@ class Proposalmodel(models.Model):
     comment=models.CharField(max_length=133234250)
     reference=models.CharField(max_length=250)
     document=models.FileField(blank=True, null=True)
-    assignedTo= models.ManyToManyField(User, related_name='assigned_students', blank=True)
+    assignedTo = models.OneToOneField(User, related_name='proposal', blank=True, null=True, on_delete=models.CASCADE)
 
     
     

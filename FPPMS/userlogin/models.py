@@ -24,4 +24,3 @@ class MilestoneModel(models.Model):
     
 
 
-

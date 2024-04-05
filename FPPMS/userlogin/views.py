@@ -12,6 +12,10 @@ from .forms import MileStoneForm
 from .models import MilestoneModel
 from django.shortcuts import get_object_or_404
 
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from FPPMS.models import Proposalmodel
+
 
 
 
@@ -42,8 +46,9 @@ def student_Logout(request):
 @login_required
 def student_dashboard(request):
     milestones = MilestoneModel.objects.filter(mileStoneAuthor=request.user)
+    assigned_proposal = Proposalmodel.objects.filter(assignedTo=request.user).first()
    
-    return render(request, "authentication/dashboard.html", {'milestones': milestones})
+    return render(request, "authentication/dashboard.html", {'milestones': milestones,"assigned_proposal":assigned_proposal})
 
 
 @login_required
@@ -104,3 +109,5 @@ def update_milestone(request, milestone_id):
         form = MileStoneForm(instance=milestone)
     
     return render(request, 'authentication/update_milestone.html', {'form': form, 'milestone': milestone})
+
+
