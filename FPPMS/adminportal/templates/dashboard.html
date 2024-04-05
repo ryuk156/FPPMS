@@ -86,7 +86,7 @@ font-size:30px;
               <li class="nav__item"><a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a></li>
               <li class="nav__item"><a href="{%url 'proposals' %}" class="nav-link">Proposals</a></li>
              <li class="nav__item"><a href="{% url 'addAdmin' %}" class="nav-link">Add Admin</a></li>
-             <li class="nav__item"><a href="{% url 'addUser' %}" class="nav-link">Add Students</a></li>
+             <li class="nav__item"><a href="{% url 'addUser' %}" class="nav-link">Add Groups</a></li>
              {% if user.is_authenticated %}
     <li class="nav__item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
 {% endif %}
@@ -221,7 +221,7 @@ font-size:30px;
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="adminModalLabel">All Admins</h5>
+              <h5 class="modal-title" id="adminModalLabel">All Groups</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>

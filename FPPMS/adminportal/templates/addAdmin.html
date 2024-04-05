@@ -135,7 +135,7 @@ body {
               <li class="nav__item"><a href="{% url 'dashboard' %}" class="nav-link">Dashboard</a></li>
               <li class="nav__item"><a href="{% url 'proposals' %}" class="nav-link">Proposals</a></li>
               <li class="nav__item"><a href="{% url 'addAdmin' %}" class="nav-link">Add Admin</a></li>
-              <li class="nav__item"><a href="{% url 'addUser' %}" class="nav-link active">Add Students</a></li>
+              <li class="nav__item"><a href="{% url 'addUser' %}" class="nav-link active">Add Groups</a></li>
               {% if user.is_authenticated %}
               <li class="nav__item"><a href="{% url 'login' %}" class="nav-link">Logout</a></li>
               {% endif %}
@@ -173,7 +173,7 @@ body {
                         </div>
                         </div>
                         <div class="text-center">
-                             <button type="submit" class="btn btn-block ">Create User</button>
+                             <button type="submit" class="btn btn-block ">Create Group</button>
                         </div>
                     </form>
                 </div>
