@@ -10,8 +10,8 @@
 {%block content %}
 <div class="container pt-4">
     {% if assigned_proposal %}
-    <h1>Assigned Proposal Details</h1>
-    <p>Title: {{ assigned_proposal.title }}</p>
+    <h3>Assigned Proposal</h3>
+    <p style="font-size: 20px; font-weight: bold; color: red">{{ assigned_proposal.title }}</p>
 {% else %}
     <p>No proposal assigned to you.</p>
 {% endif %}
