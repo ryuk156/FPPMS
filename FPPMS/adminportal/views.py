@@ -56,10 +56,13 @@ class AdminLoginView(LoginView):
 @login_required(login_url='adminlogin/login_user')
 def displayProposalList(request):
     results = Proposalmodel.objects.all()
-    
+    assigned_users = Proposalmodel.objects.exclude(assignedTo__isnull=True).values_list('assignedTo', flat=True)
+    users_not_assigned = User.objects.exclude(pk__in=assigned_users)
+
     serialize = AdminSerializationClass(results, many=True)
    
-    return render(request, 'proposals.html', {'Proposalmodel': serialize.data, 'users': User.objects.all()})
+   
+    return render(request, 'proposals.html', {'Proposalmodel': serialize.data, 'users': User.objects.all(),'users_not_assigned':users_not_assigned })
 
 # callapi = requests.get('https:///displayProposal')
 # results = callapi.json()

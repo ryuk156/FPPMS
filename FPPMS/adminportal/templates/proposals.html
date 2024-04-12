@@ -510,10 +510,10 @@
                               {% else %}
                                   <option value="" selected disabled>-- Select Student --</option>
                               {% endif %}
-                              {% for user in users %}
-                                  {% if not user.is_assigned %}
+                              {% for user in users_not_assigned %}
+                                  
                                       <option value="{{ user.id }}">{{ user.username }}</option>
-                                  {% endif %}
+                                
                               {% endfor %}
                           </select>
                       </div>
