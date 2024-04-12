@@ -134,6 +134,7 @@ Fanshawe BIA Project Proposals | Home
                             <div class="value info-right">
                                 <div class="input-group">
                                     <input class="input--style-5" type="number" name="phone" >
+                                    <label id="phone-error"></label>
                                 </div>
                             </div>
                         </div>
@@ -144,6 +145,7 @@ Fanshawe BIA Project Proposals | Home
                             <div class="value info-right">
                                 <div class="input-group">
                                     <input class="input--style-5" type="email" name="email"  >
+                                    <label id="email-error"></label>
                                 </div>
                             </div>
                         </div>
@@ -161,6 +163,7 @@ Fanshawe BIA Project Proposals | Home
                                             <option>Other</option>
                                         </select>
                                         <div class="select-dropdown"></div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -188,6 +191,7 @@ Fanshawe BIA Project Proposals | Home
                             <div class="value info-right">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="ptitle" >
+                                    <label id="ptitle-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +200,9 @@ Fanshawe BIA Project Proposals | Home
                             <div class="name info-left">Project Description *</div>
                             <div class="value info-right">
                                 <div class="input-group">
-                                    <textarea  class="input--style-5" type="text" style="width:100%;" name="pdesc" ></textarea >
+                                    
+                                <textarea  class="input--style-5" type="text" style="width:100%;" name="pdesc" ></textarea >
+                                    <label id="pdesc-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
@@ -206,6 +212,7 @@ Fanshawe BIA Project Proposals | Home
                             <div class="value info-right">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="pwebsite" >
+                                    <label id="pwebsite-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
@@ -215,6 +222,7 @@ Fanshawe BIA Project Proposals | Home
                             <div class="value info-right">
                                 <div class="input-group">
                                     <textarea class="input--style-5" type="text" style="width:100%;" name="comment" ></textarea>
+                                    <label id="comment-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
@@ -225,6 +233,7 @@ Fanshawe BIA Project Proposals | Home
                             <div class="value info-right">
                                 <div class="input-group">
                                     <input class="input--style-5" type="text" name="reference" >
+                                    <label id="reference-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
@@ -456,7 +465,7 @@ Fanshawe BIA Project Proposals | Home
                     var isValid = true;
             
                     // Validate each field
-                    var isValid = true;
+                    
 
 if (title.value.trim() === '') {
     // Display error message for title
@@ -558,9 +567,6 @@ if (reference.value.trim() === '') {
     document.getElementById('reference-error').innerText = '';
 }
             
-                    // Repeat this block for other fields
-            
-                    // Return form validity
                     return isValid;
                 }
             
