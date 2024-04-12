@@ -138,11 +138,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    '/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'static_s'
-
+STATIC_ROOT = '/Users/yashpatel/Desktop/fanshaweprojectproposals/FPPMS/static_s'
 
 
 # Default primary key field type
