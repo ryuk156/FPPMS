@@ -505,16 +505,18 @@
                         <label class="col-sm-3 col-form-label">Assigned To</label>
                         <div class="col-sm-9">
                           <select class="form-control" name="assignedTo">
-                            {% if data.assignedTo %}
-                                <option value="{{ data.assignedTo.id }}" selected>{{ data.assignedTo.username }}</option>
-                            {% else %}
-                                <option value="" selected disabled>-- Select Student --</option>
-                            {% endif %}
-                            {% for user in users %}
-                                <option value="{{ user.id }}">{{ user.username }}</option>
-                            {% endfor %}
-                        </select>
-                        </div>
+                              {% if data.assignedTo %}
+                                  <option value="{{ data.assignedTo.id }}" selected>{{ data.assignedTo.username }}</option>
+                              {% else %}
+                                  <option value="" selected disabled>-- Select Student --</option>
+                              {% endif %}
+                              {% for user in users %}
+                                  {% if not user.is_assigned %}
+                                      <option value="{{ user.id }}">{{ user.username }}</option>
+                                  {% endif %}
+                              {% endfor %}
+                          </select>
+                      </div>
                     </div>
                       <div class="modal-footer">
                         <button type="submit" class="btn btn-secondary">
