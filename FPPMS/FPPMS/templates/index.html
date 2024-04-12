@@ -456,15 +456,107 @@ Fanshawe BIA Project Proposals | Home
                     var isValid = true;
             
                     // Validate each field
-                    if (title.value.trim() === '') {
-                        // Display error message for title
-                        title.classList.add('error');
-                        document.getElementById('title-error').innerText = 'Title is required';
-                        isValid = false;
-                    } else {
-                        title.classList.remove('error');
-                        document.getElementById('title-error').innerText = '';
-                    }
+                    var isValid = true;
+
+if (title.value.trim() === '') {
+    // Display error message for title
+    title.classList.add('error');
+    document.getElementById('title-error').innerText = 'Title is required';
+    isValid = false;
+} else {
+    title.classList.remove('error');
+    document.getElementById('title-error').innerText = '';
+}
+
+if (fname.value.trim() === '') {
+    // Display error message for fname
+    fname.classList.add('error');
+    document.getElementById('fname-error').innerText = 'First Name is required';
+    isValid = false;
+} else {
+    fname.classList.remove('error');
+    document.getElementById('fname-error').innerText = '';
+}
+
+if (lname.value.trim() === '') {
+    // Display error message for lname
+    lname.classList.add('error');
+    document.getElementById('lname-error').innerText = 'Last Name is required';
+    isValid = false;
+} else {
+    lname.classList.remove('error');
+    document.getElementById('lname-error').innerText = '';
+}
+
+if (phone.value.trim() === '') {
+    // Display error message for phone
+    phone.classList.add('error');
+    document.getElementById('phone-error').innerText = 'Phone is required';
+    isValid = false;
+} else {
+    phone.classList.remove('error');
+    document.getElementById('phone-error').innerText = '';
+}
+
+if (email.value.trim() === '') {
+    // Display error message for email
+    email.classList.add('error');
+    document.getElementById('email-error').innerText = 'Email is required';
+    isValid = false;
+} else {
+    email.classList.remove('error');
+    document.getElementById('email-error').innerText = '';
+}
+
+if (ptitle.value.trim() === '') {
+    // Display error message for ptitle
+    ptitle.classList.add('error');
+    document.getElementById('ptitle-error').innerText = 'Project Title is required';
+    isValid = false;
+} else {
+    ptitle.classList.remove('error');
+    document.getElementById('ptitle-error').innerText = '';
+}
+
+if (pdesc.value.trim() === '') {
+    // Display error message for pdesc
+    pdesc.classList.add('error');
+    document.getElementById('pdesc-error').innerText = 'Project Description is required';
+    isValid = false;
+} else {
+    pdesc.classList.remove('error');
+    document.getElementById('pdesc-error').innerText = '';
+}
+
+if (pwebsite.value.trim() === '') {
+    // Display error message for pwebsite
+    pwebsite.classList.add('error');
+    document.getElementById('pwebsite-error').innerText = 'Project Website is required';
+    isValid = false;
+} else {
+    pwebsite.classList.remove('error');
+    document.getElementById('pwebsite-error').innerText = '';
+}
+
+if (comment.value.trim() === '') {
+    // Display error message for comment
+    comment.classList.add('error');
+    document.getElementById('comment-error').innerText = 'Comment is required';
+    isValid = false;
+} else {
+    comment.classList.remove('error');
+    document.getElementById('comment-error').innerText = '';
+}
+
+if (reference.value.trim() === '') {
+    // Display error message for reference
+    reference.classList.add('error');
+    document.getElementById('reference-error').innerText = 'Reference is required';
+    isValid = false;
+} else {
+    reference.classList.remove('error');
+    document.getElementById('reference-error').innerText = '';
+}
             
                     // Repeat this block for other fields
             
