@@ -91,71 +91,153 @@ Fanshawe BIA Project Proposals | Home
                 </div>
                 <div class="card-body">
                     <form method="POST" action='Insertproposal' enctype="multipart/form-data" id="proposal-form">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="name info-left">Title *</div>
+                         {% csrf_token %}                         
+                        <div class="form-row ">
+                           <div class="name info-left">Title *</div>
+                           
                             <div class="value info-right">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="{{ form.title.name }}" id="title" required>
-                                    <label id="title-error" class="error-label"></label>
+                                    <input class="input--style-5" type="text" name="{{ form.title.name }}" id="title"  >
+                   
+                                   <label id="title-error"></label>
+
                                 </div>
-                            </div>
+                             </div>
                         </div>
-                    
+
+
+                       
                         <div class="form-row m-b-55">
                             <div class="name info-left">Name *</div>
                             <div class="value info-right">
                                 <div class="row row-space">
                                     <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="fname" id="fname" required>
+                                            <input class="input--style-5" type="text" name="fname" id="fname" >
+                                            
+      
                                             <label class="label--desc">first name</label>
-                                            <label id="fname-error" class="error-label"></label>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="lname" required>
+                                            <input class="input--style-5" type="text" name="lname" >
                                             <label class="label--desc">last name</label>
-                                            <label id="lname-error" class="error-label"></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-row">
                             <div class="name info-left">Phone *</div>
                             <div class="value info-right">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="number" name="phone" required>
-                                    <label id="phone-error" class="error-label"></label>
+                                    <input class="input--style-5" type="number" name="phone" >
+                                    <label id="phone-error"></label>
                                 </div>
                             </div>
                         </div>
-                    
-                        <!-- Other form fields with required attribute added -->
-                    
+
+
+                        <div class="form-row">
+                            <div class="name info-left">Email *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="email" name="email"  >
+                                    <label id="email-error"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">User Type *</div>
+                            <div class="">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="userType" >
+                                            <option disabled="disabled" selected="selected">Choose any option</option>
+                                            <option>Sponsor</option>
+                                            <option>Organisation</option>
+                                            <option>Fanshawe Alumni</option>
+                                            <option>Other</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Proposal Status<label class="label--desc">(default)</label></div>
+                            <div class="">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="status" >
+                                            <option  selected="selected"> Pending </option>
+                                            <option disabled="disabled"> Approved</option>
+                                            <option disabled="disabled"> Rejected</option>
+                                            <option disabled="disabled"> Split</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Project Title *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="ptitle" >
+                                    <label id="ptitle-error" class="error-label"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Project Description *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    
+                                <textarea  class="input--style-5" type="text" style="width:100%;" name="pdesc" ></textarea >
+                                    <label id="pdesc-error" class="error-label"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name info-left">Project Website *</div>
+                            <div class="value info-right">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="pwebsite" >
+                                    <label id="pwebsite-error" class="error-label"></label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-row">
                             <div class="name info-left">Comment *</div>
                             <div class="value info-right">
                                 <div class="input-group">
-                                    <textarea class="input--style-5" type="text" style="width:100%;" name="comment" required></textarea>
+                                    <textarea class="input--style-5" type="text" style="width:100%;" name="comment" ></textarea>
                                     <label id="comment-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
-                    
-                        <div class="form-row">
+
+
+						<div class="form-row">
                             <div class="name info-left">Who Referred you? *</div>
                             <div class="value info-right">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="reference" required>
+                                    <input class="input--style-5" type="text" name="reference" >
                                     <label id="reference-error" class="error-label"></label>
                                 </div>
                             </div>
                         </div>
-                    
+
                         <div class="form-row">
                             <div class="name info-left">Documents (Optional)</div>
                             <div class="value info-right">
@@ -164,14 +246,21 @@ Fanshawe BIA Project Proposals | Home
                                 </div>
                             </div>
                         </div>
-                    
+
+                    <!--    <div class="form-row" style="padding-left:165px;">
+                            <div class="g-recaptcha" data-sitekey="6Lex-JMfAAAAAFi8AuxqZk6ro7zwl3APC8Jd_HwQ"></div>
+							<input type="hidden" name="derive_fields" value="imgverify=g-recaptcha-response" />
+                        </div>-->
+
                         <div>
                             <div class="text-center">
                                 <button class="btn btn--radius-2 btn--red" type="submit">Submit Proposal</button>
                             </div>
                         </div>
+
+                            
+
                     </form>
-                    
                 </div>
 
             </div>
