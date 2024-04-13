@@ -326,7 +326,7 @@ def deleteUser(request, user_id):
             user_to_delete.delete()
             # Provide a success message
             messages.success(request, "User deleted successfully.")
-            return redirect('dashboard.html')
+            return redirect('dashboard')
         except User.DoesNotExist:
             # If the user with the specified ID does not exist, provide an error message
             messages.error(request, "User does not exist.")
