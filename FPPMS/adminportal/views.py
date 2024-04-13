@@ -84,6 +84,7 @@ def addAdmin(request):
         password = request.POST['job']
         # print(fname +" "+ lname+" "+email +" "+ mob)
         user = User.objects.create_user(fname, email, password)
+        user.is_staff = True
         user.save()
         return redirect('home')
     return render(request, 'addAdmin.html')
