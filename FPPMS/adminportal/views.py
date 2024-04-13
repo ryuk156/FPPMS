@@ -86,7 +86,7 @@ def addAdmin(request):
         user = User.objects.create_user(fname, email, password)
         user.is_staff = True
         user.save()
-        return redirect('home')
+        return redirect('dashboard')
     return render(request, 'addAdmin.html')
 
 @login_required(login_url='adminlogin/login_user')
